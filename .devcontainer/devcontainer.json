@@ -1,0 +1,35 @@
+{
+  "name": "Ubuntu",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": { "VARIANT": "focal" }
+  },
+
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.automationProfile.linux": {
+      "path": "/bin/zsh"
+    }
+  },
+
+  "mounts": [
+    // TO-DO: Add a way to require project name before building container
+    "source=flutter-container-zsh-history,target=/home/vscode/commandhistory,type=volume"
+  ],
+
+  "workspaceMount": "source=flutter-container-workspace,target=/home/vscode/workspace,type=volume",
+  "workspaceFolder": "/home/vscode/workspace",
+
+  "extensions": ["dart-code.dart-code", "dart-code.flutter"],
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8090, 42000],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "./install",
+
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "vscode",
+
+  "features": {}
+}
