@@ -2,7 +2,7 @@
   "name": "Ubuntu",
   "build": {
     "dockerfile": "Dockerfile",
-    "args": { "VARIANT": "focal" }
+    "args": { "VARIANT": "focal", "ENABLE_ANDROID_SDK": "true" }
   },
 
   "settings": {
@@ -14,7 +14,9 @@
 
   "mounts": [
     // TO-DO: Add a way to require project name before building container
-    "source=flutter-container-zsh-history,target=/home/vscode/commandhistory,type=volume"
+    "source=flutter-container-zsh-history,target=/home/vscode/commandhistory,type=volume",
+    "source=android-sdk-container-sdk-root,target=/home/vscode/android,type=volume",
+    "source=android-sdk-container-java-home,target=/home/vscode/java-home,type=volume"
   ],
 
   "workspaceMount": "source=flutter-container-workspace,target=/home/vscode/workspace,type=volume",
